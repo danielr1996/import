@@ -1,5 +1,5 @@
 import * as esbuild from 'https://deno.land/x/esbuild@v0.15.16/mod.js'
-import httpFetch from 'https://raw.githubusercontent.com/bumpupapp/esbuild-plugin-http-fetch/main/index.js'
+import httpFetch from 'https://raw.githubusercontent.com/danielr1996/esbuild-plugin-http-fetch/main/index.js'
 const AsyncFunction = async function () {}.constructor
 
 export const build = async (options: Record<string, unknown>) => {
@@ -11,9 +11,6 @@ export const build = async (options: Record<string, unknown>) => {
             plugins: [httpFetch],
             minify: true,
             logLevel: 'silent',
-            loader: {
-                '.ts':'ts'
-            },
             format: 'esm',
             ...options
         })
@@ -37,15 +34,6 @@ export const importModule = async (module: string) => {
     })
     return AsyncFunction(parseBuildOutput(text))()
 }
-// export const importString = async (module: string) => {
-//     const text = await build({
-//         stdin:{
-//
-//         },
-//         resolveDir: '',
-//     })
-//     return AsyncFunction(parseBuildOutput(text))()
-// }
 
 export class ModuleBuildError extends Error {
     constructor(public error: Error){
