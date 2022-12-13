@@ -1,5 +1,5 @@
 import * as esbuild from 'https://deno.land/x/esbuild@v0.15.16/mod.js'
-import httpFetch from 'https://raw.githubusercontent.com/han-tyumi/esbuild-plugin-http-fetch/main/index.js'
+import httpFetch from 'https://raw.githubusercontent.com/bumpupapp/esbuild-plugin-http-fetch/main/index.js'
 const AsyncFunction = async function () {}.constructor
 
 export const build = async (options: Record<string, unknown>) => {
